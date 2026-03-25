@@ -84,3 +84,72 @@ Write-Host ($texto1 -like '*Power*')
 3. Crea una variable booleana que sea verdadera si tienes más de 18 años.
 
 Puedes consultar los archivos `.ps1` en la carpeta `01-Conceptos-Basicos` para ver ejemplos completos y soluciones.
+
+---
+
+## Manejo de Archivos y Carpetas en PowerShell
+
+### Listar archivos y carpetas
+```powershell
+# Lista todos los archivos y carpetas en el directorio actual
+Get-ChildItem
+# Lista archivos en una ruta específica
+Get-ChildItem C:\Users\TuUsuario\Documentos
+```
+
+### Crear carpetas y archivos
+```powershell
+# Crear una carpeta
+New-Item -Path "C:\Temp\NuevaCarpeta" -ItemType Directory
+# Crear un archivo de texto vacío
+New-Item -Path "C:\Temp\archivo.txt" -ItemType File
+```
+
+### Escribir y leer archivos de texto
+```powershell
+# Escribir texto en un archivo
+Set-Content -Path "C:\Temp\archivo.txt" -Value "Hola, mundo!"
+# Leer el contenido de un archivo
+Get-Content -Path "C:\Temp\archivo.txt"
+```
+
+### Copiar, mover y eliminar archivos/carpetas
+```powershell
+# Copiar archivo
+Copy-Item -Path "C:\Temp\archivo.txt" -Destination "C:\Temp\archivo_copia.txt"
+# Mover archivo
+Move-Item -Path "C:\Temp\archivo.txt" -Destination "C:\Temp\Subcarpeta\archivo.txt"
+# Eliminar archivo
+Remove-Item -Path "C:\Temp\archivo_copia.txt"
+# Eliminar carpeta (y su contenido)
+Remove-Item -Path "C:\Temp\NuevaCarpeta" -Recurse
+```
+
+---
+
+## Ejercicios Prácticos de Archivos y Carpetas
+
+1. Crea una carpeta llamada `PruebasPS` en tu escritorio.
+2. Dentro de esa carpeta, crea un archivo llamado `saludo.txt` y escribe tu nombre en él.
+3. Lee el contenido de `saludo.txt` y muéstralo por pantalla.
+4. Copia el archivo `saludo.txt` a una subcarpeta llamada `Backup`.
+5. Elimina el archivo original `saludo.txt` (deja solo la copia en `Backup`).
+
+Estos ejercicios te ayudarán a practicar la automatización de tareas con archivos y carpetas en PowerShell.
+
+---
+
+## Desafío Integrador Opcional: Gestor de Tareas Semanal
+
+1. Crea una carpeta llamada `TareasSemana` en tu escritorio.
+2. Dentro de esa carpeta, crea un archivo para cada día de la semana (`lunes.txt`, `martes.txt`, ..., `domingo.txt`) usando un bucle.
+3. Escribe en cada archivo una tarea diferente (puedes inventarlas).
+4. Lee y muestra por pantalla el contenido de todos los archivos usando un bucle.
+5. Crea una subcarpeta llamada `Realizadas`.
+6. Mueve los archivos `lunes.txt`, `miércoles.txt` y `viernes.txt` a la carpeta `Realizadas`.
+7. Elimina el archivo `domingo.txt`.
+8. Muestra por pantalla la lista de archivos que quedan en `TareasSemana` y en `Realizadas`.
+
+Opcional: Automatiza todo el proceso en un solo script `.ps1`.
+
+Este desafío te ayudará a consolidar el manejo de variables, bucles, condicionales y automatización de archivos en PowerShell.
