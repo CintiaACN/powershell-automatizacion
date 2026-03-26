@@ -153,3 +153,17 @@ Estos ejercicios te ayudarán a practicar la automatización de tareas con archi
 Opcional: Automatiza todo el proceso en un solo script `.ps1`.
 
 Este desafío te ayudará a consolidar el manejo de variables, bucles, condicionales y automatización de archivos en PowerShell.
+
+### 🔍 Verificación de archivos con `-Recurse -File`
+
+El comando:
+
+```powershell
+Get-ChildItem <ruta> -Recurse -File
+se utiliza para listar todos los archivos existentes dentro de una carpeta y sus subcarpetas, de forma recursiva.
+Es especialmente útil para:
+verificar que los archivos no se hayan perdido, sino que estén en otra subcarpeta
+validar el resultado final de un script que mueve archivos
+evitar suposiciones sobre dónde “deberían” estar los archivos
+Al usar -Recurse, PowerShell recorre toda la estructura de carpetas, y con -File se limita a mostrar solo archivos (excluyendo carpetas).
+Este comando es una herramienta clave de debugging y validación, ya que permite confirmar el estado real del filesystem independientemente de la lógica del script.
