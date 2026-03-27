@@ -167,3 +167,20 @@ validar el resultado final de un script que mueve archivos
 evitar suposiciones sobre dónde “deberían” estar los archivos
 Al usar -Recurse, PowerShell recorre toda la estructura de carpetas, y con -File se limita a mostrar solo archivos (excluyendo carpetas).
 Este comando es una herramienta clave de debugging y validación, ya que permite confirmar el estado real del filesystem independientemente de la lógica del script.
+
+---------------------
+Regla de oro
+Si un script trabaja con archivos:
+NUNCA confíes en rutas relativas.
+Siempre anclá con $env:USERPROFILE + Join-Path.
+ejemplo: 
+$base = Join-Path $env:USERPROFILE "Desktop\WorkFiles"
+$processed = Join-Path $base "Processed"
+Con esto: no importa desde dónde ejecutes el script y no "desaparece" nada
+
+-------------
+Qué haceOut-Null? Descarta la salida
+> $nullDescarta salida y errores
+ (más agresivo)Write-HostImprime texto “a mano”
+ -PassThruDevuelve el objeto creado/modificado
+ Regla mental: Out-Null = “hacelo, pero no me lo muestres”. No usar cuando se está debuggeando
